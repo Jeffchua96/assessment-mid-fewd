@@ -34,7 +34,7 @@ function getAllMovieTitles(movies) {
   if(movies.length === 0){
     throw " error "
   }
-  return movies.map( movies => movies.title)
+  return movies.map( movie => movie.title === title)
 }
 /**
  * checkIfAnyMovieHasRating()
@@ -61,14 +61,12 @@ function checkIfAnyMovieHasRating(movies, G){
    if (movies === ratedGMovies){
     return true
   }
-  if (movies !==ratedGMovies){
+  if (movies !== ratedGMovies){
     return false
   }
   return ratedGMovies = movies.some (movies => movies.rated.includes("ratedG"))
 }
   
-
-
 
 /**
  * findById()
@@ -90,6 +88,10 @@ function findById(movies, id) {
   if (movies.length === 0){
   throw "error"
 }
+let movieId = movie.find(movie => movie.imdbId ===id)
+if (movieId === undefined){
+  return null
+} 
 return movies = movies.find( movies => movies.id === id)
 }
 /**
